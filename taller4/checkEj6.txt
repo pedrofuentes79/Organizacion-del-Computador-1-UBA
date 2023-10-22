@@ -1,0 +1,3 @@
+     |00| SET R1 , 0xFF
+     |02| MIX R0 , R1
+halt |04| JMP halt
