@@ -78,10 +78,10 @@
 	reset_microOp
 
 01011: ; MIX
-    RB_enOut  ALU_enA  RB_selectIndexOut=0; dejo entrar en la alu el 1er valor
-    RB_enOut  ALU_enB  RB_selectIndexOut=1; dejo entrar en la alu el 2do valor
-    ALU_OP=MIX                            ; le paso el opcode de mix (1010)
-    RB_enIn   ALU_enOut RB_selectIndexIn=0; meto en el R0 el resultado
+    RB_enOut  ALU_enA  RB_selectIndexOut=0
+    RB_enOut  ALU_enB  RB_selectIndexOut=1
+    ALU_OP=MIX                            
+    RB_enIn   ALU_enOut RB_selectIndexIn=0
     reset_microOp
 
   

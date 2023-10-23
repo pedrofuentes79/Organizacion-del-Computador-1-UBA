@@ -1,0 +1,2 @@
+     |00| SIG R0
+halt |02| JMP halt
