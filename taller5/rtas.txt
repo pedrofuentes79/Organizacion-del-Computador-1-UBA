@@ -1,0 +1,34 @@
+Introducción - Recorrer la máquina y la hoja de datos, y responder:
+a) ¿Qué componentes están involucrados en cada paso del ciclo Fetch - Decode - Execute
+de la máquina OrgaSmallI?
+
+Fetch: PC, Memoria, Unidad de Control.
+Decode: Decode, Unidad de Control.
+Execute: Unidad de Control y circuitos necesarios para la instrucción (dependiendo de las señales de la Unidad de Control)
+
+
+b) ¿En qué parte del ciclo de instrucción (Fetch - Decode - Execute) deberían detectarse
+y atenderse las interrupciones?
+En el Fetch, antes de pedir una nueva instrucción, chequea si hay una interrupción para atenderla.
+
+c) ¿Donde se almacenan las micro-instrucciones?
+En la memoria ROM de la Unidad de Control.
+
+d) Explicar cómo podría hallar el micro-programa correspondiente a una instrucci´on
+cualquiera.
+Podría decodificar la instrucción y acceder a la memoria de la Unidad de Control, donde se guardan las microinstrucciones.
+
+e) El taller pasado analizamos algunos micro-programas con micro-instrucciones condicionales
+(“IF”). ¿Que mecanismo implementa la máquina para decidir si ejecutar
+su rama o no?
+Levanta la flag JZ(por ej) y deja pasar un +2 al microPC en vez de un +1 si vale la flag Z. Si no, deja pasar +1, haciendo que se siga con la próximos microOp.
+
+
+
+
+-----
+# antes de la interrupcion se guardan el pc y el psw (estado de las flags previo) en el sp.
+# Pone el PC donde estaba antes y las flags donde estaban antes
+
+IRET => PC = [0xFF]; I=1??
+
