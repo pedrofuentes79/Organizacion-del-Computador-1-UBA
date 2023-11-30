@@ -1,0 +1,82 @@
+---Intro---
+
+Una computadora que utilice el modelo de Von Neumann no tendría mucha razón de ser si no tiene un subsistema de entrada/salida mediante el cual pueda interactuar con el mundo exterior para poder recibir y/o enviar información. En el esquema típico del modelo de Von Neumann tenemos un sistema de E/S ubicado en la parte inferior del mismo, sin embargo hay otras partes de la arquitectura que participan del ingreso y egreso de estos datos desde el exterior. Estas partes incluyen, pero no se limitan, a las siguientes:
+
+1) Espacios en la memoria principal dedicados exclusivamente a funciones de E/S.
+2) Interfaces de dispositivo diseñadas para comunicarse con dispositivos específicos como teclados o monitores y que pueden recibir datos, enviarlos o ambos.
+3) Módulos de control que se encargan de mover datos entre la memoria principal y las interfaces de dispositivo.
+4) Un bus exclusivo que conecta la memoria principal con los módulos de control.
+
+(Dibujar el esquema del modelo de Von Neumann con el sistema de E/S detallado)
+
+Nos interesan entonces dos elementos principales del sistema de E/S : los Métodos de acceso, que se refiere a cómo se envía y recibe información de los dispositivos de E/S, y los Métodos de control, que se refiere a cómo el dispositivo se comunica con la CPU para notificarla de un evento de E/S.
+
+---MÉTODOS DE ACCESO DE E/S---
+
+Antes de definir las dos alternativas de acceso a E/S que pueden ser usadas en combinación, debemos saber dos cosas :
+
+1) Cada controlador de dispositivo tiene un conjunto de registros que son utilizados para comunicarse con la CPU. Dichos registros pueden ser leídos o escritos ya sea para conocer el estado actual del dispositivo o para indicarle que debe realizar alguna acción.
+2) Muchos dispositivos tienen un buffer de datos que está a disposición del SO y de los programas para que estos puedan leer y/o escribir información temporal sobre el mismo. Un ejemplo de buffer de datos es la RAM de video, que le sirve a las computadoras para mostrar píxeles en una pantalla.
+
+--Puertos dedicados--
+
+En esta primera alternativa, cada registro de control tiene asignado un puerto de E/S. El conjunto de los puertos de E/S conforman un espacio protegido que no puede ser accedido por programas de alto nivel, sino solamente por el kernel, y es distinto al espacio de la memoria principal. La CPU puede leer y escribir en los registros de control direccionados por un puerto con instrucciones especiales IN y OUT.
+
+--Mapeo a memoria--
+
+La segunda opción es mapear los registros de control a algunos lugares específicos de la memoria principal, que nuevamente no van a poder ser utilizados por el resto del sistema. Estos espacios están reservados generalmente en las partes altas o bajas de la memoria.
+
+---MÉTODOS DE CONTROL DE E/S---
+
+Normalmente los dispositivos tienen un registro de estado que nos permite saber si está disponible para realizar alguna tarea. La pregunta que cabe ahora es : ¿ Cómo nos damos cuenta cuando un dipositivo está listo o no ? Tenemos nuevamente 2 alternativas : Polling e Interrupciones, y cada una tiene sus ventajas dependiendo del contexto y/o dispositivo.
+
+--Programmed I/O : Polling--
+
+En esta primera alternativa la CPU se encarga de todo el trabajo, revisando constantemente el estado de cada dispositivo. Los sistemas que utilizan Polling típicamente tienen al menos un registro para uso exclusivo de cada dispositivo de E/S.
+El problema (o la desventaja) con esta opción es que la CPU se encuentra en un bucle continuo hasta atender una solicitud de E/S y no hace ningún otro trabajo útil hasta que ello suceda. Es por esta razón que éste método se utiliza con propósitos específicos, como cajeros automáticos o sistemas que deben monitorear eventos ambientales, por ejemplo.
+
+--Interrupciones--
+
+Las interrupciones funcionan de manera opuesta al Polling. En este caso son los dispositivos los que se encargan de notificarle a la CPU cuando hay un evento de E/S. De este modo, puede continuar realizando otras tareas hasta que la interrumpen.
+Generalmente el modo que tienen los dispositivos de avisarle a la CPU que hay un evento de E/S es modificando un bit en el registro de flags. Una vez modificado dicho bit, se siguen los siguientes pasos:
+
+1) El SO interrumpe el programa que se esté ejecutando y guarda su estado para continuar con la tarea luego de haber atendido la interrupción.
+2) Se obtiene el puntero al inicio de la rutina de atención de interrupciones (ISR) correspondiente al dispositivo en cuestión y lo carga en el Program Counter para ejecutarla.
+3) Cuando se termina la ISR, se reestablece la información para continuar con el programa que se estaba ejecutando en un principio.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

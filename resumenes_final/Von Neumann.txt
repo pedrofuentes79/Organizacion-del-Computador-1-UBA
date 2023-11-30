@@ -1,0 +1,74 @@
+α•◦≤≥≡∀ℝ⇔∃⇒¬∧∨∈∉≠∅π π₁ π₂ π₃
+∃ ≥ ≤ ⟺ ℝ ℕ ⟹ n₀ ³² ≠ ∀ Θ Ω α • ◦ ≡ ∀ ¬ ∧ ∨ ∈ ∉ ≠ ∅ π ← ⊆ ∪ ∩
+
+---Intro---
+
+Organización : aspectos físicos de los sistemas informáticos.
+
+Arquitectura : aspectos lógicos de la implementación de los sistemas. Incluye el conjunto de instrucciones (ISA), tipos de datos, cantidad y tipos de registros, modos de direccionamiento, E/S, etc.
+
+ISA : Set de instrucciones que un CPU puede entender y ejecutar. Son los aspectos visibles para el programador como los tipos de datos, instrucciones disponibles, registros, interrupciones, etc.
+
+---Modelo y arquitectura de Von Neumann---
+
+Hubo una época en la que diseñar un programa e implementarlo era una tarea muy ardua ya que implicaba manipular el cableado de la máquina, y cuando se necesitaba utilizar otro programa había que reconectar todo nuevamente según la documentación.
+Fue Von Neumann quien tuvo la revolucionaria idea de que las computadoras debían almacenar los programas en una memoria para poder tenerlos a disposición en todo momento.
+El modelo se caracteriza por 4 elementos :
+
+1) Los datos se almacenan en una memoria sobre la que se puede leer y escribir. Estos datos pueden ser programas si la computadora los interpreta de esa manera, o bien pueden ser operandos de dichos programas que se utilizan para obtener otros resultados. Si el PC alguna vez apuntó o apunta a esa dirección de memoria entonces es una instrucción, porque alguna vez pasó por el ciclo de instrucción o ciclo fetch-decode-execute.
+2) La operación de la máquina depende del estado de la memoria, es decir depende de lo que está guardado en cada celda de la misma.
+3) El contenido de la memoria es accedido a partir de su posición.
+4) La ejecución del programa es secuencial, a menos que se indique lo contrario. Esto significa que se va accediendo a cada celda en orden respecto de las posiciones. Puede ser que el programa en algún momento decida saltar a otra posición de la memoria que no sea la siguiente para obtener algún dato que esté almacenado "lejos" de donde está actualmente.
+
+Basándose en el modelo descripto anteriormente, la arquitectura de Von Neumann está formada por tres componentes principales :
+
+1) CPU : está formada por la Unidad de Control (UC), la Unidad Aritmética Lógica (ALU), los Registros y un Program Counter (PC). Este último es un tipo de Registro especial o de propósito específico.
+2) Memoria : donde se almacenan los datos y programas en sistema binario.
+3) Sistema de E/S : el cual sirve para poder interactuar con datos que entran para poder operarlos, y darles salida en caso de ser necesario.
+
+Dibujar el diagrama del modelo de Von Neumann con el CPU conectado a la memoria y al sistema de E/S. Dentro del CPU debe encontrarse : los registros, el PC (que es como un registro especial), la ALU y la UC. La ALU está conectada a los registros y a la UC. Todo ida y vuelta.
+
+Cuello de botella de Von Neumann:
+
+Hay que destacar que en esta arquitectura hay un camino único entre la CPU y la memoria, lo que fuerza la alternación entre ciclos de lectura/escritura y ejecución. El cuello de botella se manifiesta al haber una diferencia entre la velocidad de acceso a la memoria y la velocidad de procesamiento de la CPU, ya que aunque esta última puede procesar datos a alta velocidad, a menudo debe "esperar" o "pausar" su actividad al estar la memoria utilizando el único bus a una tasa de transferencia menor.
+Esta limitación se trató de mitigar de diferentes formas, siendo la más utilizada y mejorada la Memoria Caché.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
