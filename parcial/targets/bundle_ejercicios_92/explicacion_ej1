@@ -1,0 +1,30 @@
+Explicación ejercicio 1
+main:
+	Primero cargo los parámetros que voy a usar en a0, a1, a2 y llamo a la función ej1
+
+ej1:
+	Guardo los valores que quiero mantener en mis saved registers
+	
+loop:
+	inicio el loop. Si i=long lo termino y voy a return
+	
+	chequeo si el indice es par. Si es impar, voy a prox_iteracion. Si no, ejecuto lo siguiente
+	
+	cargo el elemento que quiero ver en mi registro a0
+	
+	cargo la suma (s2) en mi registro a1
+	
+	llamo a la disyuncion, que guarda el resultado en a0
+	
+	Piso s2 (la suma) con a0, el resultado de la disyuncion
+
+prox_iteracion
+	incremento la dirección al siguiente elemento
+	
+	aumento en 1 el indice
+	
+	vuelvo al loop a evaluar la condición
+
+return:
+	pongo mis resultados en los registros correspondientes para imprimirlos
+	devuelvo ra a su valor previo a llamar a la funcion ej1.

@@ -1,0 +1,22 @@
+main:
+	cargo los parametros de mi funcion en registros a0,a1,a2
+	llamo a la funcion ej2
+
+ej2:
+	guardo los valores que quiero mantener en saved registers
+
+loop:
+	inicio el loop con la condición de si i=longitud, lo termino, siendo i el indice del elemento actual
+	
+	
+	si el índice es par, voy a skip_copy
+	
+	si no, 
+		cargo la posición actual del array src en a0
+		cargo a0 en la posicion actual del array dst
+
+skip_copy:
+	aumento src y dst en 4, para ver la siguiente posición del array
+	aumento el indice
+	vuelvo al loop
+	
